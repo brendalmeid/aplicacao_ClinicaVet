@@ -1,0 +1,139 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Leaf_Grey" language="java" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a1f690a3-5977-4467-85f8-6b0bcd5b7210">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value="ZG9ub3MgQVMgLDEzMiwxNiwwNzFjZjM1MC1kNzhkLTQyNDUtYWViNC0zYjNkZDk1NmVlZjE7"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Post - Clinica Vet"/>
+	<style name="Title" fontName="Arial" fontSize="26.0" bold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18.0"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12.0" bold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12.0"/>
+	<query language="SQL"><![CDATA[SELECT id,
+	nome,
+	cpf,
+	email,
+	telefone,
+	data_nascimento
+FROM donos]]></query>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="donos"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="donos"/>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.label" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="donos"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email"/>
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="donos"/>
+	</field>
+	<field name="telefone" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="telefone"/>
+		<property name="com.jaspersoft.studio.field.label" value="telefone"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="donos"/>
+	</field>
+	<field name="data_nascimento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="data_nascimento"/>
+		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="donos"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="75" splitType="Stretch">
+		<element kind="staticText" uuid="6f9c1004-6140-4588-9c4f-d75824835765" x="0" y="13" width="263" height="33" vTextAlign="Middle" style="Title">
+			<text><![CDATA[Relatório Donos]]></text>
+		</element>
+		<element kind="staticText" uuid="8e16dabd-2e54-471b-9652-83e1d55379ec" x="0" y="46" width="274" height="22" style="SubTitle">
+			<text><![CDATA[Todos os donos cadastrados]]></text>
+		</element>
+		<element kind="image" uuid="d114aee1-d277-4bdb-a2ce-0ee4a87664c2" x="408" y="10" width="145" height="62">
+			<expression><![CDATA["src/imagens/logo.png"]]></expression>
+		</element>
+	</title>
+	<pageHeader splitType="Stretch"/>
+	<columnHeader height="36" splitType="Stretch">
+		<element kind="line" uuid="544e89f7-0fd1-4142-aa23-e335e3be7007" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1">
+			<pen lineWidth="0.5" lineColor="#999999"/>
+		</element>
+		<element kind="staticText" uuid="cc0783df-9980-4f48-a6c5-d98c4484730e" x="0" y="19" width="92" height="15" style="Column header">
+			<text><![CDATA[id]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44aa3dae-6595-4a6c-8634-2c1a96fbc0b6"/>
+		</element>
+		<element kind="staticText" uuid="0045ca3b-67db-47a9-8a95-54c10f448c93" x="92" y="19" width="92" height="15" style="Column header">
+			<text><![CDATA[nome]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db9732a8-777f-4b83-833e-7549f3781ba1"/>
+		</element>
+		<element kind="staticText" uuid="ed8ef052-a6d7-4f37-aea5-8e1ec69aa9f0" x="184" y="19" width="92" height="15" style="Column header">
+			<text><![CDATA[cpf]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1bdda6f7-0ca7-40fd-9f12-3664207c409b"/>
+		</element>
+		<element kind="staticText" uuid="7b8e12f4-5ee7-4eee-bd34-1162875a481c" x="276" y="19" width="92" height="15" style="Column header">
+			<text><![CDATA[email]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="50fe3877-bcf1-4e8d-8001-c5d85842037f"/>
+		</element>
+		<element kind="staticText" uuid="1c5d9fe7-a109-43a9-a3aa-e84857e304c0" x="368" y="19" width="92" height="15" style="Column header">
+			<text><![CDATA[telefone]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="43216083-30fb-48ea-b3c6-1d9e0f926ef5"/>
+		</element>
+		<element kind="staticText" uuid="17ca0203-4492-406f-8dfb-5deee215afa6" x="460" y="19" width="92" height="15" style="Column header">
+			<text><![CDATA[data_nascimento]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f85c162b-470b-498f-b1a4-15fec5544820"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<element kind="line" uuid="cb229859-ab9a-4aa3-afa2-84439642f4ee" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1">
+				<pen lineWidth="0.5" lineColor="#999999"/>
+			</element>
+			<element kind="textField" uuid="03596e11-b23d-461c-9b48-da682a315d29" stretchType="ContainerHeight" x="0" y="0" width="92" height="15" textAdjust="StretchHeight" style="Detail">
+				<expression><![CDATA[$F{id}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44aa3dae-6595-4a6c-8634-2c1a96fbc0b6"/>
+			</element>
+			<element kind="textField" uuid="9ef6f027-b614-4a21-934f-9e9e76d8ba7a" stretchType="ContainerHeight" x="92" y="0" width="92" height="15" textAdjust="StretchHeight" style="Detail">
+				<expression><![CDATA[$F{nome}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="db9732a8-777f-4b83-833e-7549f3781ba1"/>
+			</element>
+			<element kind="textField" uuid="86ad9e4b-6e2d-445d-a3de-b002df78b50e" stretchType="ContainerHeight" x="184" y="0" width="92" height="15" textAdjust="StretchHeight" style="Detail">
+				<expression><![CDATA[$F{cpf}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1bdda6f7-0ca7-40fd-9f12-3664207c409b"/>
+			</element>
+			<element kind="textField" uuid="df687e06-fcca-4da5-9b02-d45b3853d23a" stretchType="ContainerHeight" x="276" y="0" width="92" height="15" textAdjust="StretchHeight" style="Detail">
+				<expression><![CDATA[$F{email}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="50fe3877-bcf1-4e8d-8001-c5d85842037f"/>
+			</element>
+			<element kind="textField" uuid="3bf7e4a0-4582-49fd-ba83-e953e922f8c6" stretchType="ContainerHeight" x="368" y="0" width="92" height="15" textAdjust="StretchHeight" style="Detail">
+				<expression><![CDATA[$F{telefone}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="43216083-30fb-48ea-b3c6-1d9e0f926ef5"/>
+			</element>
+			<element kind="textField" uuid="61c1df65-ab4b-4113-9970-5efcff87f672" stretchType="ContainerHeight" x="460" y="0" width="92" height="15" textAdjust="StretchHeight" style="Detail">
+				<expression><![CDATA[$F{data_nascimento}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f85c162b-470b-498f-b1a4-15fec5544820"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch">
+		<element kind="line" uuid="401e0e59-de38-4dd2-8257-418cb489177c" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1">
+			<pen lineWidth="0.5" lineColor="#999999"/>
+		</element>
+	</columnFooter>
+	<pageFooter height="20" splitType="Stretch">
+		<element kind="textField" uuid="deb23d85-47bb-4de6-978e-113ff117188c" x="433" y="0" width="80" height="20" fontSize="10.0" bold="false" hTextAlign="Right" style="Column header">
+			<expression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></expression>
+		</element>
+		<element kind="textField" uuid="c6ce76ba-6e11-41e2-9415-72dc2eff001b" x="513" y="0" width="40" height="20" fontSize="10.0" evaluationTime="Report" bold="false" style="Column header">
+			<expression><![CDATA[" " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="5a79d2a0-bcde-4ad5-adf0-c4eb2066f6dd" x="0" y="0" width="197" height="20" fontSize="10.0" pattern="EEEEE dd MMMMM yyyy" bold="false" style="Column header">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+	</pageFooter>
+	<summary splitType="Stretch"/>
+</jasperReport>
