@@ -25,7 +25,7 @@ public class PetsController {
         Conexao c = new Conexao();
         c.conectar();
         
-        String sql = "INSERT INTO pets (dono_id, nome, especie, raca, sexo, data_nascimento, peso_kg, observacoes, created_at)values (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO pets (dono_id, nome, especie, raca, sexo, data_nascimento, peso, observacoes, created_at)values (?,?,?,?,?,?,?,?,?)";
         
         try{
             PreparedStatement sentenca = c.con.prepareStatement(sql);
@@ -60,7 +60,7 @@ public class PetsController {
         
         String sql = "UPDATE pets set dono_id = ?, "
                 + "nome = ?, especie = ?, raca = ?, sexo = ?, data_nascimento = ?, "
-                + "peso_kg = ?, observacoes = ? WHERE id = ? ";
+                + "peso = ?, observacoes = ? WHERE id = ? ";
         
         try {
             PreparedStatement sentenca = c.con.prepareStatement(sql);
@@ -128,7 +128,7 @@ public class PetsController {
                 retorno.setRaca(result.getString("raca"));
                 retorno.setSexo(result.getString("sexo"));
                 retorno.setDataNascimento(converterDateParaString(result.getDate("data_nascimento")));
-                retorno.setPeso(result.getFloat("peso_kg"));
+                retorno.setPeso(result.getFloat("peso"));
                 retorno.setObservacoes(result.getString("observacoes"));
                 
                 
@@ -158,7 +158,7 @@ public class PetsController {
                 p.setRaca(result.getString("raca"));
                 p.setSexo(result.getString("sexo"));
                 p.setDataNascimento(converterDateParaString(result.getDate("data_nascimento")));
-                p.setPeso(result.getFloat("peso_kg"));
+                p.setPeso(result.getFloat("peso"));
                 p.setObservacoes(result.getString("observacoes"));
                 
                 retorno.add(p);

@@ -18,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
 public class DonosView extends javax.swing.JInternalFrame {
 
     private int linha = -1; // Variável para controlar a linha selecionada na tabela
+    private boolean IsSearchView = false;
+    private boolean IsCreationView= false;
 
     /**
      * Creates new form DonosView
@@ -291,6 +293,8 @@ public class DonosView extends javax.swing.JInternalFrame {
                    jtxEmail.setEditable(true);
                    jtxTelefone.setEditable(true);
                    jtxDataNascimento.setEditable(true);
+                   
+                   IsSearchView = true;
                }
            } catch (NumberFormatException e) {
                JOptionPane.showMessageDialog(this, "Código inválido. Digite apenas números!", "Erro de Formato", JOptionPane.ERROR_MESSAGE);
@@ -312,6 +316,7 @@ public class DonosView extends javax.swing.JInternalFrame {
 
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
         limparCampos(); // Limpar campos para nova entrada
+        IsCreationView = true;
         jbPesquisar.setEnabled(false);
         jbNovo.setEnabled(false);
         jbEditar.setEnabled(false);
@@ -454,7 +459,15 @@ public class DonosView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtDonosMouseClicked
 
     private void jbFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFecharActionPerformed
-        dispose(); 
+                if (IsSearchView || IsCreationView)
+        {
+            IsSearchView = false;
+            IsCreationView = false;
+            inicializa();
+            System.out.println("Pesquisa limpa com sucesso");
+        }
+        else
+            dispose();
     }//GEN-LAST:event_jbFecharActionPerformed
     
   

@@ -15,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PetsView extends javax.swing.JInternalFrame {
 
+    private boolean IsSearchView = false;
+    private boolean IsCreationView= false;
     private ArrayList<DonosModel> listaDonos; // Lista de Donos para o JComboBox
     private int linha = -1; // Linha selecionada na tabela
 
@@ -24,7 +26,7 @@ public class PetsView extends javax.swing.JInternalFrame {
     public PetsView() {
         initComponents();
         preencherTabela(); // Preenche a tabela ao iniciar
-        inicializar();    // Inicializa o estado dos campos e botões
+        inicializa();    // Inicializa o estado dos campos e botões
         preencherComboDonos(); // Preenche o ComboBox de donos
         preencherComboSexo();   // Preenche o ComboBox de sexo
     }
@@ -311,6 +313,7 @@ public class PetsView extends javax.swing.JInternalFrame {
 
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
         limparCampos();
+        IsCreationView = true;
         jtxIdPet.setEditable(false); // Código é auto-incremento
         jtxNome.setEditable(true);
         jtxEspecie.setEditable(true);
@@ -382,7 +385,7 @@ public class PetsView extends javax.swing.JInternalFrame {
             if (controller.editar(pet)) {
                 JOptionPane.showMessageDialog(this, "Pet atualizado com sucesso!");
                 limparCampos();
-                inicializar();
+                inicializa();
                 preencherTabela();
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao atualizar Pet!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -413,7 +416,7 @@ public class PetsView extends javax.swing.JInternalFrame {
             if (controller.excluir(pet)) {
                 JOptionPane.showMessageDialog(this, "Pet excluído com sucesso!");
                 limparCampos();
-                inicializar();
+                inicializa();
                 preencherTabela();
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao excluir Pet!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -474,10 +477,12 @@ public class PetsView extends javax.swing.JInternalFrame {
                 jbEditar.setEnabled(true);
                 jbExcluir.setEnabled(true);
                 
+                IsSearchView = true;
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Pet não encontrado!", "Pesquisa", JOptionPane.INFORMATION_MESSAGE);
                 limparCampos();
-                inicializar();
+                inicializa();
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Código do Pet inválido. Digite apenas números!", "Erro de Formato", JOptionPane.ERROR_MESSAGE);
@@ -536,7 +541,7 @@ public class PetsView extends javax.swing.JInternalFrame {
             if (controller.inserir(pet)) {
                 JOptionPane.showMessageDialog(this, "Pet inserido com sucesso!");
                 limparCampos();
-                inicializar();
+                inicializa();
                 preencherTabela();
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao inserir Pet!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -548,7 +553,16 @@ public class PetsView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFecharActionPerformed
-        dispose();
+
+        if (IsSearchView || IsCreationView)
+        {
+            IsSearchView = false;
+            IsCreationView = false;
+            inicializa();
+            System.out.println("Pesquisa limpa com sucesso");
+        }
+        else
+            dispose();
     }//GEN-LAST:event_jbFecharActionPerformed
 
     private void jtPetsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtPetsMouseClicked
@@ -599,7 +613,7 @@ public class PetsView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jtPetsMouseClicked
 
-    private void inicializar(){ // Renomeado de inicializa para padronização
+    private void inicializa(){ // Renomeado de inicializa para padronização
         jtxIdPet.setEditable(true); // Editável para pesquisa
         jtxNome.setEditable(false);
         jtxEspecie.setEditable(false);

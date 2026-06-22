@@ -25,6 +25,8 @@ import model.ServicosModel;
  */
 public class EditarAtendimentoView extends javax.swing.JInternalFrame {
 
+    private boolean IsSearchView = false;
+    private boolean IsCreationView = false;
     // Listas para preencher os ComboBoxes e para lógica
     private ArrayList<PetsModel> listaPets;
     private ArrayList<MedicoModel> listaMedicos; // Tipo MedicoModel
@@ -386,6 +388,8 @@ public class EditarAtendimentoView extends javax.swing.JInternalFrame {
                 jbExcluir.setEnabled(true); // Habilita o botão Excluir
                 jbPesquisar.setEnabled(true); // Mantém pesquisar
                 // jbNovo (se existir) deve ser desabilitado se estiver editando
+                
+                IsSearchView = true;
             } else {
                 JOptionPane.showMessageDialog(this, "Atendimento não encontrado!", "Pesquisa", JOptionPane.INFORMATION_MESSAGE);
                 limparCamposAtendimento();
@@ -599,7 +603,15 @@ public class EditarAtendimentoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbExcluirActionPerformed
 
     private void jbFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFecharActionPerformed
-        dispose();
+        if (IsSearchView || IsCreationView)
+        {
+            IsSearchView = false;
+            IsCreationView = false;
+            inicializarComponentes();
+            System.out.println("Pesquisa limpa com sucesso");
+        }
+        else
+            dispose();
     }//GEN-LAST:event_jbFecharActionPerformed
 
     private void jfmDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfmDataActionPerformed

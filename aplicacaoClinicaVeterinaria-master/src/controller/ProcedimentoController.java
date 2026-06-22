@@ -18,7 +18,7 @@ public class ProcedimentoController {
         Conexao c = new Conexao();
         c.conectar();
 
-        String sql = "INSERT INTO procedimentos (nome, valor_padrao, descricao) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO procedimentos (nome, custo, descricao) VALUES (?, ?, ?)";
 
         try {
             PreparedStatement sentenca = c.con.prepareStatement(sql);
@@ -42,7 +42,7 @@ public class ProcedimentoController {
         Conexao c = new Conexao();
         c.conectar();
 
-        String sql = "UPDATE procedimentos SET nome = ?, valor_padrao = ?, descricao = ? WHERE id = ?";
+        String sql = "UPDATE procedimentos SET nome = ?, custo = ?, descricao = ? WHERE id = ?";
 
         try {
             PreparedStatement sentenca = c.con.prepareStatement(sql);
@@ -100,7 +100,7 @@ public class ProcedimentoController {
                 retorno = new ProcedimentoModel();
                 retorno.setIdProcedimento(result.getInt("id"));
                 retorno.setNome(result.getString("nome"));
-                retorno.setValorPadrao(result.getFloat("valor_padrao"));
+                retorno.setValorPadrao(result.getFloat("custo"));
                 retorno.setDescricao(result.getString("descricao"));
             }
         } catch (SQLException e) {
@@ -126,7 +126,7 @@ public class ProcedimentoController {
                 ProcedimentoModel p = new ProcedimentoModel();
                 p.setIdProcedimento(result.getInt("id"));
                 p.setNome(result.getString("nome"));
-                p.setValorPadrao(result.getFloat("valor_padrao"));
+                p.setValorPadrao(result.getFloat("custo"));
                 p.setDescricao(result.getString("descricao"));
                 retorno.add(p);
             }

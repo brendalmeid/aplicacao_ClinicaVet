@@ -15,7 +15,7 @@ public class Conexao {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             //URL
-            String url = "jdbc:mysql://localhost:/AplicacaoVenda";
+            String url = "jdbc:mysql://localhost:/AplicacaoClinicaVet";
             //USUARIO
             String usuario = "root";
             //SENHA

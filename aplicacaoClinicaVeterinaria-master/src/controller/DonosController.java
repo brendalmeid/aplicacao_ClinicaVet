@@ -41,7 +41,7 @@ public class DonosController {
                 retorno = true;
             }
         } catch(SQLException e){
-            System.err.println("Erro ao inserir pet: " + e.getMessage());
+            System.err.println("Erro ao inserir dono: " + e.getMessage());
         }
         
         c.desconectar();
