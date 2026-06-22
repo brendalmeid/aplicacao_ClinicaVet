@@ -25,7 +25,7 @@ public class MedicoController {
         String sql = "INSERT INTO medicos (nome, crmv, email, data_nascimento, telefone, ativo) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setString(1, medico.getNome());
             sentenca.setInt(2, medico.getCrmv());
             sentenca.setString(3, medico.getEmail());
@@ -52,7 +52,7 @@ public class MedicoController {
         String sql = "UPDATE medicos SET nome = ?, crmv = ?, email = ?, data_nascimento = ?, telefone = ?, ativo = ? WHERE id = ?";
 
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setString(1, medico.getNome());
             sentenca.setInt(2, medico.getCrmv());
             sentenca.setString(3, medico.getEmail());
@@ -80,7 +80,7 @@ public class MedicoController {
         String sql = "DELETE FROM medicos WHERE id = ?";
 
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, medico.getIdMedico());
 
             if (!sentenca.execute()) {
@@ -102,7 +102,7 @@ public class MedicoController {
         String sql = "SELECT * FROM medicos WHERE id = ?";
 
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, medico.getIdMedico());
             ResultSet result = sentenca.executeQuery();
 
@@ -132,7 +132,7 @@ public class MedicoController {
         String sql = "SELECT * FROM medicos";
 
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             ResultSet result = sentenca.executeQuery();
 
             while (result.next()) {

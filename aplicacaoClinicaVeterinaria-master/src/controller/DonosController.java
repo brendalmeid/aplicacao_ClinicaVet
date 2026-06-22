@@ -28,7 +28,7 @@ public class DonosController {
         String sql = "INSERT INTO donos (nome, cpf, email, telefone, data_nascimento, created_at)VALUES (?,?,?,?,?,?)";
         
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             
             sentenca.setString(1, dono.getNome());
             sentenca.setString(2, dono.getCpf());
@@ -57,7 +57,7 @@ public class DonosController {
                 + " cpf = ?, email = ?, telefone = ?, data_nascimento = ?WHERE id = ?";
         
         try{
-           PreparedStatement sentenca =  c.conector.prepareStatement(sql);
+           PreparedStatement sentenca =  c.con.prepareStatement(sql);
            
            sentenca.setString(1, dono.getNome());
            sentenca.setString(2, dono.getCpf());
@@ -84,7 +84,7 @@ public class DonosController {
         
         String sql = "DELETE FROM donos WHERE id = ?";
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, dono.getDonoId());
             if(!sentenca.execute()){
                 retorno = true;
@@ -104,7 +104,7 @@ public class DonosController {
         c.conectar();
         String sql = "SELECT * FROM donos where id = ?";
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, dono.getDonoId());
             ResultSet result = sentenca.executeQuery();
             if(result.next()){
@@ -131,7 +131,7 @@ public class DonosController {
         String sql = "SELECT * FROM donos";
         
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             ResultSet result = sentenca.executeQuery();
             while(result.next()){
                 DonosModel d = new DonosModel();

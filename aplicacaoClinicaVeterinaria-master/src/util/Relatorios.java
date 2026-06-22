@@ -34,10 +34,9 @@ public class Relatorios {
                 parametros = new HashMap<>();
             }
 
-            JasperPrint print = JasperFillManager.fillReport(
-                relStream,
+            JasperPrint print = JasperFillManager.fillReport(relStream,
                 parametros,
-                c.conector
+                c.con
             );
 
             JasperViewer viewer = new JasperViewer(print, false);

@@ -8,40 +8,35 @@ import java.sql.SQLException;
  * @author Italo
  */
 public class Conexao {
-    public Connection conector;
+    public Connection con;
 
-    private static final String HOST = "134.199.222.200";
-    private static final String PORT = "5432";
-    private static final String DATABASE_NAME = "vet_clinic";
-    private static final String USER = "admin";
-    private static final String PASSWORD = "admin123";
-
-    private static final String URL = String.format(
-        "jdbc:postgresql://%s:%s/%s?sslmode=disable",
-        HOST, PORT, DATABASE_NAME
-    );
-
-    public void conectar(){
-        try{
-            Class.forName("org.postgresql.Driver");
-            
-            conector = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Aplicação conectada com Banco PostgreSQL!");
-        }catch(ClassNotFoundException e){
-            System.err.println("Driver não encontrado! Verifique se o JAR do PostgreSQL JDBC está nas bibliotecas do projeto. " + e.getMessage());
-        }catch(SQLException e){
-            System.err.println("Erro na conexão com banco PostgreSQL! " + e.getMessage());
+    public void conectar() {
+        //DRIVER
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            //URL
+            String url = "jdbc:mysql://localhost:/AplicacaoVenda";
+            //USUARIO
+            String usuario = "root";
+            //SENHA
+            String senha = "root";
+            con = DriverManager.getConnection(url, usuario, senha);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Driver não encontrado: " + e.getMessage());
+        } catch (SQLException e) {
+            System.out.println("Erro ao conectar com banco: " + e.getMessage());
         }
     }
 
-    public void desconectar(){
-        try{
-            if (conector != null && !conector.isClosed()) { 
-                conector.close();
-                System.out.println("Conexão com Banco PostgreSQL encerrada!");
-            }
-        }catch(SQLException e){
-            System.err.println("Erro ao fechar conexão! " + e.getMessage());
+    public void desconectar()
+    {
+        try
+        {
+            con.close();
+        }catch(SQLException e)
+        {
+            System.out.println("Erro ao fechar conexao: "+ e.getMessage());
         }
     }
 }
+

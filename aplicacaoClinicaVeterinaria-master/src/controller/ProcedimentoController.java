@@ -21,7 +21,7 @@ public class ProcedimentoController {
         String sql = "INSERT INTO procedimentos (nome, valor_padrao, descricao) VALUES (?, ?, ?)";
 
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setString(1, procedimento.getNome());
             sentenca.setFloat(2, procedimento.getValorPadrao());
             sentenca.setString(3, procedimento.getDescricao());
@@ -45,7 +45,7 @@ public class ProcedimentoController {
         String sql = "UPDATE procedimentos SET nome = ?, valor_padrao = ?, descricao = ? WHERE id = ?";
 
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setString(1, procedimento.getNome());
             sentenca.setFloat(2, procedimento.getValorPadrao());
             sentenca.setString(3, procedimento.getDescricao());
@@ -70,7 +70,7 @@ public class ProcedimentoController {
         String sql = "DELETE FROM procedimentos WHERE id = ?";
 
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, procedimento.getIdProcedimento());
 
             if (!sentenca.execute()) {
@@ -92,7 +92,7 @@ public class ProcedimentoController {
         String sql = "SELECT * FROM procedimentos WHERE id = ?";
 
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, procedimento.getIdProcedimento());
             ResultSet result = sentenca.executeQuery();
 
@@ -119,7 +119,7 @@ public class ProcedimentoController {
         String sql = "SELECT * FROM procedimentos";
 
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             ResultSet result = sentenca.executeQuery();
 
             while (result.next()) {

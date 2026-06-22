@@ -483,7 +483,7 @@ public class DonosView extends javax.swing.JInternalFrame {
         
         
         if(lista.isEmpty()){
-            
+            System.out.println("Erro ao preencher tabela: Lista vazia");
         } else {
             for(DonosModel d: lista){
                 modeloTabela.addRow(new String[]{

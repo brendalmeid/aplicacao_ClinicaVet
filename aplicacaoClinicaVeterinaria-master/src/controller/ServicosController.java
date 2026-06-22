@@ -25,7 +25,7 @@ public class ServicosController {
         String sql = "INSERT INTO servicos (atendimento_id, procedimento_id, valor_cobrado, created_at) VALUES (?,?,?,?)";
         
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             
             sentenca.setInt(1, servico.getId_atendimento());
             sentenca.setInt(2, servico.getId_procedimento());
@@ -52,7 +52,7 @@ public class ServicosController {
         String sql = "UPDATE servicos SET valor_cobrado = ? WHERE id = ?";
         
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             
             sentenca.setFloat(1, servico.getValor_cobrado());
             sentenca.setInt(2, servico.getId());
@@ -77,7 +77,7 @@ public class ServicosController {
         String sql = "DELETE FROM servicos WHERE id = ?";
         
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             
             sentenca.setInt(1, servico.getId());
             if(!sentenca.execute()){
@@ -98,7 +98,7 @@ public class ServicosController {
         String sql = "SELECT * FROM servicos WHERE id = ?";
         
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, servico.getId());
             ResultSet result = sentenca.executeQuery();
             if(result.next()){
@@ -125,7 +125,7 @@ public class ServicosController {
        String sql = "SELECT * FROM servicos";
        
        try{
-           PreparedStatement sentenca = c.conector.prepareStatement(sql);
+           PreparedStatement sentenca = c.con.prepareStatement(sql);
            ResultSet result = sentenca.executeQuery();
            while(result.next()){
                ServicosModel s = new ServicosModel();
@@ -151,7 +151,7 @@ public class ServicosController {
         c.conectar();
         String sql = "SELECT id, atendimento_id, procedimento_id, valor_cobrado FROM servicos WHERE atendimento_id = ?";
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, idAtendimento);
             ResultSet result = sentenca.executeQuery();
 

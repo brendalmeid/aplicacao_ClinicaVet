@@ -27,7 +27,7 @@ public class AtendimentosController {
         String sql = "INSERT INTO atendimentos (pet_id, medico_id, data_hora, status, motivo_visita, diagnostico_final, created_at)VALUES (?,?,?,?,?,?,?)";
         
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             
             sentenca.setInt(1, atendimento.getPet_id());
             sentenca.setInt(2, atendimento.getMedico_id());
@@ -60,7 +60,7 @@ public class AtendimentosController {
                 + " WHERE id = ?";
         
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             
             sentenca.setInt(1, atendimento.getPet_id());
             sentenca.setInt(2, atendimento.getMedico_id());
@@ -92,7 +92,7 @@ public class AtendimentosController {
         String sql = "DELETE FROM atendimentos WHERE id = ?";
         
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, atendimento.getId());
             if(!sentenca.execute()){
                 retorno = true;
@@ -113,7 +113,7 @@ public class AtendimentosController {
         
         String sql = "SELECT * FROM atendimentos WHERE id = ?";
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, atendimento.getId());
             
             ResultSet result = sentenca.executeQuery();
@@ -145,7 +145,7 @@ public class AtendimentosController {
         String sql = "SELECT * FROM atendimentos";
         
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             ResultSet result = sentenca.executeQuery();
             
             while(result.next()){

@@ -21,7 +21,7 @@ public class FornecedorController {
         //CRIAR SQL INSERT
         String sql = "insert into fornecedor (cnpj,razaosocial,endereco)values (?,?,?)";
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             //PASSAR PARAMETROS
             sentenca.setString(1, fornecedor.getCnpj());
             sentenca.setString(2, fornecedor.getRazaoSocial());
@@ -45,7 +45,7 @@ public class FornecedorController {
         String sql = "update fornecedor set cnpj = ?, "
                 + "razaosocial = ?, endereco=? where idfornecedor = ? ";
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setString(1, fornecedor.getCnpj());
             sentenca.setString(2, fornecedor.getRazaoSocial());
             sentenca.setString(3, fornecedor.getEndereco());
@@ -66,7 +66,7 @@ public class FornecedorController {
         c.conectar();
         String sql = "delete from fornecedor where idfornecedor = ?";
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, fornecedor.getIdFornecedor());
             if(!sentenca.execute())
                 retorno = true;
@@ -83,7 +83,7 @@ public class FornecedorController {
         c.conectar();
         String sql = "select * from fornecedor where idfornecedor = ?";
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, fornecedor.getIdFornecedor());
             ResultSet result = sentenca.executeQuery();
             if(result.next()){
@@ -106,7 +106,7 @@ public class FornecedorController {
         c.conectar();
         String sql = "select * from fornecedor";
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             ResultSet result = sentenca.executeQuery();
             while(result.next()){
                 FornecedorModel f = new FornecedorModel();

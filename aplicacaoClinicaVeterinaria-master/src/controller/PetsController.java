@@ -28,7 +28,7 @@ public class PetsController {
         String sql = "INSERT INTO pets (dono_id, nome, especie, raca, sexo, data_nascimento, peso_kg, observacoes, created_at)values (?,?,?,?,?,?,?,?,?)";
         
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             
             sentenca.setInt(1, pet.getDonoId());
             sentenca.setString(2, pet.getNome());
@@ -63,7 +63,7 @@ public class PetsController {
                 + "peso_kg = ?, observacoes = ? WHERE id = ? ";
         
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             
             sentenca.setInt(1, pet.getDonoId());
             sentenca.setString(2, pet.getNome());
@@ -96,7 +96,7 @@ public class PetsController {
 
         String sql = "DELETE FROM pets WHERE id = ?";
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, pet.getPetId());
             if(!sentenca.execute()){
                 retorno = true;
@@ -116,7 +116,7 @@ public class PetsController {
         c.conectar();
         String sql = "SELECT * FROM pets where id = ?";
         try{
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, pet.getPetId());
             ResultSet result = sentenca.executeQuery();
             if(result.next()){
@@ -147,7 +147,7 @@ public class PetsController {
         String sql = "SELECT * FROM pets";
         
         try {
-            PreparedStatement sentenca = c.conector.prepareStatement(sql);
+            PreparedStatement sentenca = c.con.prepareStatement(sql);
             ResultSet result = sentenca.executeQuery();
             while(result.next()){
                 PetsModel p = new PetsModel();
