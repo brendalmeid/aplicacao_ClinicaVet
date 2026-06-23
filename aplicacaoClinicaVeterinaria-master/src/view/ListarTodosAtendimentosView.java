@@ -149,7 +149,7 @@ public class ListarTodosAtendimentosView extends javax.swing.JInternalFrame {
                 editarAtendimentoView.carregarAtendimentoParaEdicao(idAtendimento); // Simula o clique no botão pesquisar (jbPesquisar deve ser público)
 
                 // Opcional: Fechar esta view após abrir a de edição
-                // dispose(); 
+                dispose(); 
 
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Erro ao obter o código do atendimento: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);

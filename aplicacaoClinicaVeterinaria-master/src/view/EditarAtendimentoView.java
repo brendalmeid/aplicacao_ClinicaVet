@@ -603,15 +603,8 @@ public class EditarAtendimentoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbExcluirActionPerformed
 
     private void jbFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFecharActionPerformed
-        if (IsSearchView || IsCreationView)
-        {
-            IsSearchView = false;
-            IsCreationView = false;
-            inicializarComponentes();
-            System.out.println("Pesquisa limpa com sucesso");
-        }
-        else
-            dispose();
+
+        dispose();
     }//GEN-LAST:event_jbFecharActionPerformed
 
     private void jfmDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfmDataActionPerformed

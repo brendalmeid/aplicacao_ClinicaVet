@@ -63,6 +63,7 @@ public class PetsView extends javax.swing.JInternalFrame {
         jtxDataNascimento = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jcbDono = new javax.swing.JComboBox<>();
+        jbLimpar = new javax.swing.JButton();
 
         jLabel1.setText("Codigo");
 
@@ -165,6 +166,13 @@ public class PetsView extends javax.swing.JInternalFrame {
             }
         });
 
+        jbLimpar.setText("Limpar");
+        jbLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimparActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -231,12 +239,14 @@ public class PetsView extends javax.swing.JInternalFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jtxObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(51, 51, 51)
-                                        .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(52, 52, 52)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jbLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
                                 .addComponent(jbFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 208, Short.MAX_VALUE))))
         );
@@ -282,7 +292,8 @@ public class PetsView extends javax.swing.JInternalFrame {
                     .addComponent(jbSalvar)
                     .addComponent(jbEditar)
                     .addComponent(jbExcluir)
-                    .addComponent(jbFechar))
+                    .addComponent(jbFechar)
+                    .addComponent(jbLimpar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(76, Short.MAX_VALUE))
@@ -554,14 +565,6 @@ public class PetsView extends javax.swing.JInternalFrame {
 
     private void jbFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFecharActionPerformed
 
-        if (IsSearchView || IsCreationView)
-        {
-            IsSearchView = false;
-            IsCreationView = false;
-            inicializa();
-            System.out.println("Pesquisa limpa com sucesso");
-        }
-        else
             dispose();
     }//GEN-LAST:event_jbFecharActionPerformed
 
@@ -612,6 +615,11 @@ public class PetsView extends javax.swing.JInternalFrame {
             jbExcluir.setEnabled(true);
         }
     }//GEN-LAST:event_jtPetsMouseClicked
+
+    private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
+        limparCampos();
+        inicializa();
+    }//GEN-LAST:event_jbLimparActionPerformed
 
     private void inicializa(){ // Renomeado de inicializa para padronização
         jtxIdPet.setEditable(true); // Editável para pesquisa
@@ -733,6 +741,7 @@ public class PetsView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbExcluir;
     private javax.swing.JButton jbFechar;
+    private javax.swing.JButton jbLimpar;
     private javax.swing.JButton jbNovo;
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbSalvar;

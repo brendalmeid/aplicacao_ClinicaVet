@@ -22,7 +22,7 @@ public class ServicosController {
         Conexao c = new Conexao();
         c.conectar();
         
-        String sql = "INSERT INTO servicos (atendimento_id, procedimento_id, valor_cobrado, created_at) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO servicos (id_atendimento, id_procedimento, valor_cobrado, created_at) VALUES (?,?,?,?)";
         
         try{
             PreparedStatement sentenca = c.con.prepareStatement(sql);
@@ -149,7 +149,7 @@ public class ServicosController {
         ArrayList<ServicosModel> retorno = new ArrayList<>();
         Conexao c = new Conexao();
         c.conectar();
-        String sql = "SELECT id, atendimento_id, procedimento_id, valor_cobrado FROM servicos WHERE atendimento_id = ?";
+        String sql = "SELECT id, id_atendimento, id_procedimento, valor_cobrado FROM servicos WHERE id_atendimento = ?";
         try {
             PreparedStatement sentenca = c.con.prepareStatement(sql);
             sentenca.setInt(1, idAtendimento);
@@ -158,8 +158,8 @@ public class ServicosController {
             while (result.next()) {
                 ServicosModel s = new ServicosModel();
                 s.setId(result.getInt("id"));
-                s.setId_atendimento(result.getInt("atendimento_id"));
-                s.setId_procedimento(result.getInt("procedimento_id"));
+                s.setId_atendimento(result.getInt("id_atendimento"));
+                s.setId_procedimento(result.getInt("id_procedimento"));
                 s.setValor_cobrado(result.getFloat("valor_cobrado"));
                 retorno.add(s);
             }

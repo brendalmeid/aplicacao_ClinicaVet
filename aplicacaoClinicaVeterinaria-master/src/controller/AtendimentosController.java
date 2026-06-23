@@ -24,7 +24,7 @@ public class AtendimentosController {
         Conexao c = new Conexao();
         c.conectar();
         
-        String sql = "INSERT INTO atendimentos (pet_id, medico_id, data_hora, status, motivo_visita, diagnostico_final, created_at)VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO atendimentos (id_pet, id_medico, data_hora, status, motivo_visita, diagnostico, created_at)VALUES (?,?,?,?,?,?,?)";
         
         try{
             PreparedStatement sentenca = c.con.prepareStatement(sql);
@@ -55,8 +55,8 @@ public class AtendimentosController {
         Conexao c = new Conexao();
         c.conectar();
         
-        String sql = "UPDATE atendimentos SET pet_id = ?, "
-                + "medico_id = ?, data_hora = ?, status = ?, motivo_visita = ?, diagnostico_final = ?"
+        String sql = "UPDATE atendimentos SET id_pet = ?, "
+                + "id_medico = ?, data_hora = ?, status = ?, motivo_visita = ?, diagnostico = ?"
                 + " WHERE id = ?";
         
         try{
@@ -121,12 +121,12 @@ public class AtendimentosController {
             if(result.next()){
                 retorno = new AtendimentosModel();
                 retorno.setId(result.getInt("id"));
-                retorno.setPet_id(result.getInt("pet_id"));
-                retorno.setMedico_id(result.getInt("medico_id"));
+                retorno.setPet_id(result.getInt("id_pet"));
+                retorno.setMedico_id(result.getInt("id_medico"));
                 retorno.setData(converterDateParaString(result.getDate("data_hora")));
                 retorno.setStatus(result.getString("status"));
                 retorno.setMotivo_visita(result.getString("motivo_visita"));
-                retorno.setDiagnostico_final(result.getString("diagnostico_final"));
+                retorno.setDiagnostico_final(result.getString("diagnostico"));
 
             }
         }catch (SQLException e){
@@ -151,12 +151,12 @@ public class AtendimentosController {
             while(result.next()){
                 AtendimentosModel a = new AtendimentosModel();
                 a.setId(result.getInt("id"));
-                a.setPet_id(result.getInt("pet_id"));
-                a.setMedico_id(result.getInt("medico_id"));
+                a.setPet_id(result.getInt("id_pet"));
+                a.setMedico_id(result.getInt("id_medico"));
                 a.setData(converterDateParaString(result.getDate("data_hora")));
                 a.setStatus(result.getString("status"));
                 a.setMotivo_visita(result.getString("motivo_visita"));
-                a.setDiagnostico_final(result.getString("diagnostico_final"));
+                a.setDiagnostico_final(result.getString("diagnostico"));
                 
                 retorno.add(a);
             }

@@ -6,7 +6,7 @@ create table Medicos
     crmv int not null,
     nome varchar(50) not null,
     data_nascimento datetime not null,
-    created_at datetime not null,
+    created_at datetime,
     email varchar(50),
     telefone varchar(50),
     ativo boolean
@@ -55,6 +55,7 @@ create table Atendimentos
     status varchar(50),
     motivo_visita text,
     diagnostico text,
+    data_hora datetime not null,
     created_at datetime not null,
     
     constraint realizado_por foreign key(id_medico) references Medicos(id),
@@ -66,7 +67,7 @@ create table Servicos
 	id int not null primary key auto_increment,
     id_atendimento int not null,
     id_procedimento int not null,
-    valor decimal(10,2),
+    valor_cobrado decimal(10,2),
     created_at datetime,
     
     constraint fornecido_em foreign key(id_atendimento) references Atendimentos(id),
