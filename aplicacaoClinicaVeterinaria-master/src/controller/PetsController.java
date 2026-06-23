@@ -16,7 +16,7 @@ import java.util.Date;
 
 /**
  *
- * @author Gamer
+ * @author Ferreiro
  */
 public class PetsController {
     public boolean inserir(PetsModel pet){

@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Gamer (Adaptado por Gemini)
+ * @author Ferreiro
  */
 public class DonosView extends javax.swing.JInternalFrame {
 

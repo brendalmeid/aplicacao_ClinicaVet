@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author italo (Adaptado por Gemini para ServicoView JInternalFrame)
+ * @author Ferreiro
  */
 public class ServicoView extends javax.swing.JInternalFrame {
 

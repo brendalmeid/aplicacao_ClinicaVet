@@ -21,7 +21,7 @@ import model.ServicosModel;
 
 /**
  *
- * @author italo (Versão Final Completa e Corrigida por Gemini)
+ * @author Ferreiro
  */
 public class EditarAtendimentoView extends javax.swing.JInternalFrame {
 

@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author italo
+ * @author Ferreiro
  */
 public class AtendimentosModel {
     private int id, pet_id, medico_id;

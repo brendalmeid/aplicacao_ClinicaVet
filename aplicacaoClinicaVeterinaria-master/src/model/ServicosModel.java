@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author italo
+ * @author Ferreiro
  */
 public class ServicosModel {
     private int id, id_atendimento, id_procedimento;

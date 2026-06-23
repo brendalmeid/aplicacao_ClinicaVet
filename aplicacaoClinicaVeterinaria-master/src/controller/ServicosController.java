@@ -14,7 +14,7 @@ import util.Conexao;
 
 /**
  *
- * @author italo
+ * @author Ferreiro
  */
 public class ServicosController {
     public boolean inserir(ServicosModel servico){

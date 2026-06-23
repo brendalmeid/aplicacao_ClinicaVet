@@ -11,6 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
+/**
+ *
+ * @author Ferreiro
+ */
 public class ProcedimentoController {
 
     public boolean inserir(ProcedimentoModel procedimento) {

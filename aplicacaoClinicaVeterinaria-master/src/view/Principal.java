@@ -7,7 +7,7 @@ import util.Relatorios;
 
 /**
  *
- * @author Yan
+ * @author Ferreiro
  */
 public class Principal extends javax.swing.JFrame {
 

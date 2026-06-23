@@ -13,7 +13,7 @@ import model.MedicoModel; // Tipo MedicoModel
 
 /**
  *
- * @author italo (Adaptado por Gemini para ListarTodosAtendimentosView)
+ * @author Ferreiro
  */
 public class ListarTodosAtendimentosView extends javax.swing.JInternalFrame {
 

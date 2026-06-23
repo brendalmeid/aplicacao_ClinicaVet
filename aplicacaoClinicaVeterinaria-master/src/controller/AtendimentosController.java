@@ -16,7 +16,7 @@ import java.util.Date;
 
 /**
  *
- * @author italo
+ * @author Ferreiro
  */
 public class AtendimentosController {
     public boolean inserir(AtendimentosModel atendimento){

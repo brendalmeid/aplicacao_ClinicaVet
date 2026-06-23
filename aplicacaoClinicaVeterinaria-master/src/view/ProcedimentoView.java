@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import model.ProcedimentoModel;
 /**
  *
- * @author User
+ * @author Ferreiro
  */
 public class ProcedimentoView extends javax.swing.JInternalFrame {
     

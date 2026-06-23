@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Gamer
+ * @author Ferreiro
  */
 public class PetsModel {
     private int idPet, dono_id;

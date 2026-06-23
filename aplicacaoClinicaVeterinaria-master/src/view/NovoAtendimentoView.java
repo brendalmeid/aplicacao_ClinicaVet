@@ -21,7 +21,7 @@ import model.ServicosModel;
 
 /**
  *
- * @author italo (Versão Final Completa por Gemini)
+ * @author Ferreiro
  */
 public class NovoAtendimentoView extends javax.swing.JInternalFrame {
 

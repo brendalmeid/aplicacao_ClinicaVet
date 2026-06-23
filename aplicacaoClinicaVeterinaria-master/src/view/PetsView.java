@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Gamer (Re-re-adaptado por Gemini, com lógica de ID de Dono)
+ * @author Ferreiro
  */
 public class PetsView extends javax.swing.JInternalFrame {
 

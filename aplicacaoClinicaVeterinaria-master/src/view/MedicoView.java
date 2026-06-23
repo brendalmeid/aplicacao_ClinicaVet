@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 /**
  *
- * @author User
+ * @author Ferreiro
  */
 public class MedicoView extends javax.swing.JInternalFrame {
     
