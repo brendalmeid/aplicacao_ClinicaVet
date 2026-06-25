@@ -603,7 +603,24 @@ public class EditarAtendimentoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbExcluirActionPerformed
 
     private void jbFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFecharActionPerformed
-
+        ListarTodosAtendimentosView listaView = new ListarTodosAtendimentosView();
+        javax.swing.JDesktopPane desktopPane = getDesktopPane();
+        if (desktopPane != null) {
+            desktopPane.add(listaView);
+            // Centraliza a JInternalFrame no JDesktopPane
+            listaView.setLocation(
+                (desktopPane.getWidth() - listaView.getWidth()) / 2,
+                (desktopPane.getHeight() - listaView.getHeight()) / 2
+            );
+        }
+        listaView.setVisible(true);
+                try {
+                    listaView.setSelected(true); // Traz para frente
+                    listaView.toFront();
+                } catch (java.beans.PropertyVetoException e) {
+                    e.printStackTrace();
+                }
+        
         dispose();
     }//GEN-LAST:event_jbFecharActionPerformed
 
