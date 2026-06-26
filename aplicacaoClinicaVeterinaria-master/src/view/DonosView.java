@@ -50,7 +50,6 @@ public class DonosView extends javax.swing.JInternalFrame {
         jtxNome = new javax.swing.JTextField();
         jtxCpf = new javax.swing.JTextField();
         jtxEmail = new javax.swing.JTextField();
-        jtxTelefone = new javax.swing.JTextField();
         jbPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtDonos = new javax.swing.JTable();
@@ -61,6 +60,7 @@ public class DonosView extends javax.swing.JInternalFrame {
         jbFechar = new javax.swing.JButton();
         jbLimpar = new javax.swing.JButton();
         jftfDataNascimento = new javax.swing.JFormattedTextField();
+        jftfTelefone = new javax.swing.JFormattedTextField();
 
         jLabel1.setText("Codigo");
 
@@ -77,12 +77,6 @@ public class DonosView extends javax.swing.JInternalFrame {
         jtxNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxNomeActionPerformed(evt);
-            }
-        });
-
-        jtxTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxTelefoneActionPerformed(evt);
             }
         });
 
@@ -161,11 +155,18 @@ public class DonosView extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         jftfDataNascimento.setText("  /  /    ");
+        jftfDataNascimento.setToolTipText("");
         jftfDataNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jftfDataNascimentoActionPerformed(evt);
             }
         });
+
+        try {
+            jftfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,8 +182,8 @@ public class DonosView extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtxTelefone))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jftfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addGap(17, 17, 17)
@@ -191,7 +192,7 @@ public class DonosView extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jtxIdDono, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                                         .addComponent(jbPesquisar))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +243,7 @@ public class DonosView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jtxTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jftfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
@@ -297,7 +298,7 @@ public class DonosView extends javax.swing.JInternalFrame {
                    jtxNome.setText(dono.getNome());
                    jtxCpf.setText(dono.getCpf());
                    jtxEmail.setText(dono.getEmail());
-                   jtxTelefone.setText(dono.getNumero()); 
+                   jftfTelefone.setText(dono.getNumero()); 
                    jftfDataNascimento.setText(dono.getDataNascimento());
                    
                    jbNovo.setEnabled(false);
@@ -308,7 +309,7 @@ public class DonosView extends javax.swing.JInternalFrame {
                    jtxNome.setEditable(true);
                    jtxCpf.setEditable(true);
                    jtxEmail.setEditable(true);
-                   jtxTelefone.setEditable(true);
+                   jftfTelefone.setEditable(true);
                    jftfDataNascimento.setEditable(true);
                    
                    IsSearchView = true;
@@ -323,10 +324,6 @@ public class DonosView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxNomeActionPerformed
 
-    private void jtxTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxTelefoneActionPerformed
-
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
         limparCampos(); // Limpar campos para nova entrada
         IsCreationView = true;
@@ -339,7 +336,7 @@ public class DonosView extends javax.swing.JInternalFrame {
         jtxNome.setEditable(true);
         jtxCpf.setEditable(true);
         jtxEmail.setEditable(true);
-        jtxTelefone.setEditable(true);
+        jftfTelefone.setEditable(true);
         jftfDataNascimento.setEditable(true);      
     }//GEN-LAST:event_jbNovoActionPerformed
 
@@ -383,7 +380,7 @@ public class DonosView extends javax.swing.JInternalFrame {
            String nome = jtxNome.getText();
            String cpf = jtxCpf.getText();
            String email = jtxEmail.getText();
-           String telefone = jtxTelefone.getText();
+           String telefone = jftfTelefone.getText();
            String dataNascimento = jftfDataNascimento.getText();
            
            if((nome.isEmpty())||(cpf.isEmpty())||(email.isEmpty())||(telefone.isEmpty())||(dataNascimento.isEmpty())){
@@ -418,7 +415,7 @@ public class DonosView extends javax.swing.JInternalFrame {
        String nome = jtxNome.getText();
        String cpf = jtxCpf.getText();
        String email = jtxEmail.getText();
-       String telefone = jtxTelefone.getText();
+       String telefone = jftfTelefone.getText();
        String dataNascimento = jftfDataNascimento.getText();
        
        if((nome.isEmpty())||(cpf.isEmpty())||(email.isEmpty())||(telefone.isEmpty())||(dataNascimento.isEmpty())){
@@ -453,7 +450,7 @@ public class DonosView extends javax.swing.JInternalFrame {
             jtxNome.setText(jtDonos.getValueAt(linha, 1).toString());
             jtxCpf.setText(jtDonos.getValueAt(linha, 2).toString());
             jtxEmail.setText(jtDonos.getValueAt(linha, 3).toString());
-            jtxTelefone.setText(jtDonos.getValueAt(linha, 4).toString());
+            jftfTelefone.setText(jtDonos.getValueAt(linha, 4).toString());
             jftfDataNascimento.setText(jtDonos.getValueAt(linha, 5).toString());
             
             jbNovo.setEnabled(false);
@@ -464,7 +461,7 @@ public class DonosView extends javax.swing.JInternalFrame {
             jtxNome.setEditable(true);
             jtxCpf.setEditable(true);
             jtxEmail.setEditable(true);
-            jtxTelefone.setEditable(true);
+            jftfTelefone.setEditable(true);
             jftfDataNascimento.setEditable(true);
             
             // linha = -1; // Comentar esta linha se quiser manter a linha selecionada na tabela
@@ -492,7 +489,7 @@ public class DonosView extends javax.swing.JInternalFrame {
         jtxNome.setEditable(false);
         jtxCpf.setEditable(false);
         jtxEmail.setEditable(false);
-        jtxTelefone.setEditable(false);
+        jftfTelefone.setEditable(false);
         jftfDataNascimento.setEditable(false);
         jbSalvar.setEnabled(false);
         jbEditar.setEnabled(false);
@@ -532,7 +529,7 @@ public class DonosView extends javax.swing.JInternalFrame {
        jtxNome.setText("");
        jtxCpf.setText("");
        jtxEmail.setText("");
-       jtxTelefone.setText(""); 
+       jftfTelefone.setText(""); 
        jftfDataNascimento.setText(""); 
     }
     
@@ -556,11 +553,11 @@ public class DonosView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbSalvar;
     private javax.swing.JFormattedTextField jftfDataNascimento;
+    private javax.swing.JFormattedTextField jftfTelefone;
     private javax.swing.JTable jtDonos;
     private javax.swing.JTextField jtxCpf;
     private javax.swing.JTextField jtxEmail;
     private javax.swing.JTextField jtxIdDono;
     private javax.swing.JTextField jtxNome;
-    private javax.swing.JTextField jtxTelefone;
     // End of variables declaration//GEN-END:variables
 }
