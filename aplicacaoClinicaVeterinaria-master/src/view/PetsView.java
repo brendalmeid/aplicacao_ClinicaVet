@@ -60,10 +60,10 @@ public class PetsView extends javax.swing.JInternalFrame {
         jbFechar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtPets = new javax.swing.JTable();
-        jtxDataNascimento = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jcbDono = new javax.swing.JComboBox<>();
         jbLimpar = new javax.swing.JButton();
+        jftfDataNascimento = new javax.swing.JFormattedTextField();
 
         jLabel1.setText("Codigo");
 
@@ -173,6 +173,18 @@ public class PetsView extends javax.swing.JInternalFrame {
             }
         });
 
+        try {
+            jftfDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jftfDataNascimento.setToolTipText("");
+        jftfDataNascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jftfDataNascimentoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -220,10 +232,10 @@ public class PetsView extends javax.swing.JInternalFrame {
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(jLabel6)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jcbDono, 0, 106, Short.MAX_VALUE)
-                                                .addComponent(jtxDataNascimento))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jcbDono, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jftfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                             .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(28, 28, 28)))
@@ -277,8 +289,8 @@ public class PetsView extends javax.swing.JInternalFrame {
                     .addComponent(jtxPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
-                        .addComponent(jtxDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)))
+                        .addComponent(jLabel7)
+                        .addComponent(jftfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -330,7 +342,7 @@ public class PetsView extends javax.swing.JInternalFrame {
         jtxEspecie.setEditable(true);
         jtxRaca.setEditable(true);
         jcbSexo.setEnabled(true);
-        jtxDataNascimento.setEditable(true);
+        jftfDataNascimento.setEditable(true);
         jtxPeso.setEditable(true);
         jtxObservacoes.setEditable(true);
         jcbDono.setEnabled(true);
@@ -356,7 +368,7 @@ public class PetsView extends javax.swing.JInternalFrame {
             String especie = jtxEspecie.getText();
             String raca = jtxRaca.getText();
             String sexo = (String) jcbSexo.getSelectedItem();
-            String dataNascimento = jtxDataNascimento.getText();
+            String dataNascimento = jftfDataNascimento.getText();
             // Validar e converter peso
             Float peso = Float.parseFloat(jtxPeso.getText());
             String observacoes = jtxObservacoes.getText();
@@ -456,7 +468,7 @@ public class PetsView extends javax.swing.JInternalFrame {
                 jtxEspecie.setText(petEncontrado.getEspecie());
                 jcbSexo.setSelectedItem(petEncontrado.getSexo());
                 jtxRaca.setText(petEncontrado.getRaca());
-                jtxDataNascimento.setText(petEncontrado.getDataNascimento());
+                jftfDataNascimento.setText(petEncontrado.getDataNascimento());
                 jtxPeso.setText(String.valueOf(petEncontrado.getPeso()));
                 jtxObservacoes.setText(petEncontrado.getObservacoes()); // Preenche observações
                 
@@ -478,7 +490,7 @@ public class PetsView extends javax.swing.JInternalFrame {
                 jtxEspecie.setEditable(true);
                 jtxRaca.setEditable(true);
                 jcbSexo.setEnabled(true);
-                jtxDataNascimento.setEditable(true);
+                jftfDataNascimento.setEditable(true);
                 jtxPeso.setEditable(true);
                 jtxObservacoes.setEditable(true);
                 jcbDono.setEnabled(true);
@@ -513,7 +525,7 @@ public class PetsView extends javax.swing.JInternalFrame {
         String especie = jtxEspecie.getText();
         String raca = jtxRaca.getText();
         String sexo = (String) jcbSexo.getSelectedItem();
-        String dataNascimento = jtxDataNascimento.getText();
+        String dataNascimento = jftfDataNascimento.getText();
         String observacoes = jtxObservacoes.getText();
         
         // Obter o ID do Dono selecionado no ComboBox (String)
@@ -578,7 +590,7 @@ public class PetsView extends javax.swing.JInternalFrame {
             jcbSexo.setSelectedItem(jtPets.getValueAt(linha, 3).toString());
             
             jtxRaca.setText(jtPets.getValueAt(linha, 4).toString());
-            jtxDataNascimento.setText(jtPets.getValueAt(linha, 5).toString());
+            jftfDataNascimento.setText(jtPets.getValueAt(linha, 5).toString());
             jtxPeso.setText(jtPets.getValueAt(linha, 6).toString());
             
 
@@ -605,7 +617,7 @@ public class PetsView extends javax.swing.JInternalFrame {
             jtxEspecie.setEditable(true);
             jtxRaca.setEditable(true);
             jcbSexo.setEnabled(true);
-            jtxDataNascimento.setEditable(true);
+            jftfDataNascimento.setEditable(true);
             jtxPeso.setEditable(true);
             jtxObservacoes.setEditable(true); 
             jcbDono.setEnabled(true);
@@ -621,13 +633,17 @@ public class PetsView extends javax.swing.JInternalFrame {
         inicializa();
     }//GEN-LAST:event_jbLimparActionPerformed
 
+    private void jftfDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jftfDataNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jftfDataNascimentoActionPerformed
+
     private void inicializa(){ // Renomeado de inicializa para padronização
         jtxIdPet.setEditable(true); // Editável para pesquisa
         jtxNome.setEditable(false);
         jtxEspecie.setEditable(false);
         jtxRaca.setEditable(false);
         jcbSexo.setEnabled(false);
-        jtxDataNascimento.setEditable(false);
+        jftfDataNascimento.setEditable(false);
         jtxPeso.setEditable(false);
         jtxObservacoes.setEditable(false);
         jcbDono.setEnabled(false); // Desabilitado no início
@@ -646,7 +662,7 @@ public class PetsView extends javax.swing.JInternalFrame {
        jtxEspecie.setText("");
        jtxRaca.setText("");
        jcbSexo.setSelectedIndex(0); // Volta para "Selecione o Sexo"
-       jtxDataNascimento.setText("");
+       jftfDataNascimento.setText("");
        jtxPeso.setText("");
        jtxObservacoes.setText("");
        jcbDono.setSelectedIndex(0); // Volta para "Selecione um Dono"
@@ -747,8 +763,8 @@ public class PetsView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbSalvar;
     private javax.swing.JComboBox<String> jcbDono;
     private javax.swing.JComboBox<String> jcbSexo;
+    private javax.swing.JFormattedTextField jftfDataNascimento;
     private javax.swing.JTable jtPets;
-    private javax.swing.JTextField jtxDataNascimento;
     private javax.swing.JTextField jtxEspecie;
     private javax.swing.JTextField jtxIdPet;
     private javax.swing.JTextField jtxNome;

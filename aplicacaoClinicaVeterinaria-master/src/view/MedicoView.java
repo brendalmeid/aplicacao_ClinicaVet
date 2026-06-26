@@ -43,7 +43,6 @@ public class MedicoView extends javax.swing.JInternalFrame {
         jtxIdMedico = new javax.swing.JTextField();
         jtxNome = new javax.swing.JTextField();
         jtxEmail = new javax.swing.JTextField();
-        jtxTelefone = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -51,13 +50,14 @@ public class MedicoView extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jtxCrmv = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jtxDataNascimento = new javax.swing.JTextField();
         jbPesquisar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jcbSituacao = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtMedico = new javax.swing.JTable();
         jbLimpar = new javax.swing.JButton();
+        jftfDataNascimento = new javax.swing.JFormattedTextField();
+        jftfTelefone = new javax.swing.JFormattedTextField();
 
         jbNovo.setText("Novo");
         jbNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -112,12 +112,6 @@ public class MedicoView extends javax.swing.JInternalFrame {
             }
         });
 
-        jtxTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxTelefoneActionPerformed(evt);
-            }
-        });
-
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Código:");
 
@@ -140,12 +134,6 @@ public class MedicoView extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setText("Situação:");
-
-        jtxDataNascimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxDataNascimentoActionPerformed(evt);
-            }
-        });
 
         jbPesquisar.setText("Pesquisar");
         jbPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -197,6 +185,24 @@ public class MedicoView extends javax.swing.JInternalFrame {
             }
         });
 
+        try {
+            jftfDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jftfDataNascimento.setToolTipText("");
+        jftfDataNascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jftfDataNascimentoActionPerformed(evt);
+            }
+        });
+
+        try {
+            jftfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -214,7 +220,7 @@ public class MedicoView extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtxEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtxCrmv, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(120, 120, 120)
+                        .addGap(143, 143, 143)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
@@ -226,13 +232,13 @@ public class MedicoView extends javax.swing.JInternalFrame {
                     .addComponent(jtxNome, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtxTelefone)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jcbSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 182, Short.MAX_VALUE))
-                    .addComponent(jtxDataNascimento)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jcbSituacao, 0, 100, Short.MAX_VALUE)
+                        .addComponent(jftfDataNascimento))
+                    .addComponent(jftfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(70, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jbNovo)
@@ -276,12 +282,12 @@ public class MedicoView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtxDataNascimento)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jftfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtxTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jftfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNovo)
@@ -292,7 +298,7 @@ public class MedicoView extends javax.swing.JInternalFrame {
                     .addComponent(jbLimpar))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -301,7 +307,7 @@ public class MedicoView extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 90, Short.MAX_VALUE))
+                .addGap(0, 67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,8 +331,8 @@ public class MedicoView extends javax.swing.JInternalFrame {
         jtxIdMedico.setEditable(false);
         jtxNome.setEditable(true);
         jtxCrmv.setEditable(true);
-        jtxTelefone.setEditable(true);
-        jtxDataNascimento.setEditable(true);
+        jftfTelefone.setEditable(true);
+        jftfDataNascimento.setEditable(true);
         jtxEmail.setEditable(true);
     }//GEN-LAST:event_jbNovoActionPerformed
 
@@ -342,17 +348,9 @@ public class MedicoView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxEmailActionPerformed
 
-    private void jtxTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxTelefoneActionPerformed
-
     private void jtxCrmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxCrmvActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtxCrmvActionPerformed
-
-    private void jtxDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxDataNascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxDataNascimentoActionPerformed
 
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
         MedicoModel medico = new MedicoModel();
@@ -372,8 +370,8 @@ public class MedicoView extends javax.swing.JInternalFrame {
                 //PREENCHER OS CAMPOS...
                 jtxNome.setText(medico.getNome());
                 jtxCrmv.setText(String.valueOf(medico.getCrmv()));
-                jtxTelefone.setText(medico.getTelefone());
-                jtxDataNascimento.setText(converterDataParaFormatoUsuario(medico.getDataNascimento()));
+                jftfTelefone.setText(medico.getTelefone());
+                jftfDataNascimento.setText(converterDataParaFormatoUsuario(medico.getDataNascimento()));
                 jtxEmail.setText(medico.getEmail());
                 jcbSituacao.setSelectedItem(medico.getSituacao());
                 
@@ -385,8 +383,8 @@ public class MedicoView extends javax.swing.JInternalFrame {
                 jtxIdMedico.setEditable(false);
                 jtxNome.setEditable(true);
                 jtxCrmv.setEditable(true);
-                jtxTelefone.setEditable(true);
-                jtxDataNascimento.setEditable(true);
+                jftfTelefone.setEditable(true);
+                jftfDataNascimento.setEditable(true);
                 jtxEmail.setEditable(true);
             }
         }
@@ -399,8 +397,8 @@ public class MedicoView extends javax.swing.JInternalFrame {
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         String nome = jtxNome.getText();
         String crmvStr = jtxCrmv.getText();
-        String telefone = jtxTelefone.getText();
-        String dataNascimento = converterDataParaFormatoBanco(jtxDataNascimento.getText());
+        String telefone = jftfTelefone.getText();
+        String dataNascimento = converterDataParaFormatoBanco(jftfDataNascimento.getText());
         if (dataNascimento == null) return; // cancela a operação se a data for inválida
         String email = jtxEmail.getText();
         if((crmvStr.isEmpty())||(telefone.isEmpty())||(dataNascimento.isEmpty()) || (email.isEmpty()) || (nome.isEmpty()))
@@ -452,9 +450,9 @@ public class MedicoView extends javax.swing.JInternalFrame {
         int idMedico = Integer.parseInt(jtxIdMedico.getText());
         String nome = jtxNome.getText();
         String email = jtxEmail.getText();
-        String telefone = jtxTelefone.getText();
+        String telefone = jftfTelefone.getText();
         int crmv = Integer.parseInt(jtxCrmv.getText());
-        String dataNascimento = converterDataParaFormatoBanco(jtxDataNascimento.getText());
+        String dataNascimento = converterDataParaFormatoBanco(jftfDataNascimento.getText());
         if (dataNascimento == null) return; // cancela a operação se a data for inválida
         if((nome.isEmpty())||(email.isEmpty())||(telefone.isEmpty()) || (dataNascimento.isEmpty()))
             JOptionPane.showMessageDialog(this, "Digite todos os campos!"
@@ -488,8 +486,8 @@ public class MedicoView extends javax.swing.JInternalFrame {
             jtxNome.setText(jtMedico.getValueAt(linha, 1).toString());
             jtxCrmv.setText(jtMedico.getValueAt(linha, 2).toString());
             jtxEmail.setText(jtMedico.getValueAt(linha, 3).toString());
-            jtxTelefone.setText(jtMedico.getValueAt(linha, 4).toString());
-            jtxDataNascimento.setText(jtMedico.getValueAt(linha, 6).toString());
+            jftfTelefone.setText(jtMedico.getValueAt(linha, 4).toString());
+            jftfDataNascimento.setText(jtMedico.getValueAt(linha, 6).toString());
             jcbSituacao.setSelectedItem(jtMedico.getValueAt(linha, 5).toString());
             
             jbNovo.setEnabled(false);
@@ -501,8 +499,8 @@ public class MedicoView extends javax.swing.JInternalFrame {
             jtxIdMedico.setEditable(false);
             jtxNome.setEditable(true);
             jtxCrmv.setEditable(true);
-            jtxTelefone.setEditable(true);
-            jtxDataNascimento.setEditable(true);
+            jftfTelefone.setEditable(true);
+            jftfDataNascimento.setEditable(true);
             jtxEmail.setEditable(true);
             linha = -1;
         }
@@ -512,6 +510,10 @@ public class MedicoView extends javax.swing.JInternalFrame {
         limparCampos();
         inicializa();
     }//GEN-LAST:event_jbLimparActionPerformed
+
+    private void jftfDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jftfDataNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jftfDataNascimentoActionPerformed
 
     private void preencherTabela(){
         MedicoController controller = new MedicoController();
@@ -540,9 +542,9 @@ public class MedicoView extends javax.swing.JInternalFrame {
         jtxIdMedico.setEditable(true);
         jtxNome.setEditable(false);
         jtxEmail.setEditable(false);
-        jtxTelefone.setEditable(false);
+        jftfTelefone.setEditable(false);
         jtxCrmv.setEditable(false);
-        jtxDataNascimento.setEditable(false);
+        jftfDataNascimento.setEditable(false);
         jbSalvar.setEnabled(false);
         jbEditar.setEnabled(false);
         jbExcluir.setEnabled(false);
@@ -555,9 +557,9 @@ public class MedicoView extends javax.swing.JInternalFrame {
         jtxIdMedico.setText("");
         jtxNome.setText("");
         jtxEmail.setText("");
-        jtxTelefone.setText("");
+        jftfTelefone.setText("");
         jtxCrmv.setText("");
-        jtxDataNascimento.setText("");
+        jftfDataNascimento.setText("");
         jcbSituacao.setSelectedIndex(-1); 
     }
 
@@ -601,12 +603,12 @@ public class MedicoView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbSalvar;
     private javax.swing.JComboBox<String> jcbSituacao;
+    private javax.swing.JFormattedTextField jftfDataNascimento;
+    private javax.swing.JFormattedTextField jftfTelefone;
     private javax.swing.JTable jtMedico;
     private javax.swing.JTextField jtxCrmv;
-    private javax.swing.JTextField jtxDataNascimento;
     private javax.swing.JTextField jtxEmail;
     private javax.swing.JTextField jtxIdMedico;
     private javax.swing.JTextField jtxNome;
-    private javax.swing.JTextField jtxTelefone;
     // End of variables declaration//GEN-END:variables
 }
